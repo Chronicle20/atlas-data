@@ -1,12 +1,12 @@
 package _map
 
 import (
+	"atlas-data/map/monster"
+	"atlas-data/map/npc"
 	point2 "atlas-data/map/point"
-	"atlas-data/monster"
-	"atlas-data/npc"
+	"atlas-data/map/portal"
+	"atlas-data/map/reactor"
 	"atlas-data/point"
-	"atlas-data/portal"
-	"atlas-data/reactor"
 	"atlas-data/rest"
 	"github.com/Chronicle20/atlas-model/model"
 	"github.com/Chronicle20/atlas-rest/server"

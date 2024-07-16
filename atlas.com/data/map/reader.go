@@ -1,11 +1,11 @@
 package _map
 
 import (
-	"atlas-data/monster"
-	"atlas-data/npc"
+	"atlas-data/map/monster"
+	"atlas-data/map/npc"
+	"atlas-data/map/portal"
+	"atlas-data/map/reactor"
 	"atlas-data/point"
-	"atlas-data/portal"
-	"atlas-data/reactor"
 	"atlas-data/tenant"
 	"atlas-data/wz"
 	"atlas-data/xml"

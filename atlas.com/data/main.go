@@ -5,6 +5,7 @@ import (
 	"atlas-data/equipment/statistics"
 	"atlas-data/logger"
 	_map "atlas-data/map"
+	"atlas-data/monster"
 	"atlas-data/tracing"
 	"atlas-data/wz"
 	"context"
@@ -64,6 +65,7 @@ func main() {
 
 	server.CreateService(l, ctx, wg, GetServer().GetPrefix(),
 		_map.InitResource(GetServer()),
+		monster.InitResource(GetServer()),
 		slots.InitResource(GetServer()),
 		statistics.InitResource(GetServer()))
 

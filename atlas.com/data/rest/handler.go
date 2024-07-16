@@ -149,3 +149,18 @@ func ParseNPC(l logrus.FieldLogger, next NpcHandler) http.HandlerFunc {
 		next(uint32(npcId))(w, r)
 	}
 }
+
+type MonsterIdHandler func(monsterId uint32) http.HandlerFunc
+
+func ParseMonsterId(l logrus.FieldLogger, next MonsterIdHandler) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		vars := mux.Vars(r)
+		monsterId, err := strconv.Atoi(vars["monsterId"])
+		if err != nil {
+			l.WithError(err).Errorf("Error parsing monsterId as uint32")
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		next(uint32(monsterId))(w, r)
+	}
+}
