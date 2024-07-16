@@ -12,6 +12,7 @@ type Node struct {
 	ChildNodes   []Node        `xml:"imgdir"`
 	IntegerNodes []IntegerNode `xml:"int"`
 	StringNodes  []StringNode  `xml:"string"`
+	PointNodes   []PointNode   `xml:"vector"`
 }
 
 func (i *Node) ChildByName(name string) (*Node, error) {
@@ -58,6 +59,32 @@ func (i *Node) GetString(name string, def string) string {
 	return def
 }
 
+func (i *Node) GetIntegerWithDefault(name string, def int32) int32 {
+	for _, c := range i.IntegerNodes {
+		if c.Name == name {
+			res, err := strconv.ParseInt(c.Value, 10, 32)
+			if err != nil {
+				return def
+			}
+			return int32(res)
+		}
+	}
+	return def
+}
+
+func (i *Node) GetFloatWithDefault(name string, def float64) float64 {
+	for _, c := range i.IntegerNodes {
+		if c.Name == name {
+			res, err := strconv.ParseFloat(c.Value, 64)
+			if err != nil {
+				return def
+			}
+			return res
+		}
+	}
+	return def
+}
+
 type IntegerNode struct {
 	Name  string `xml:"name,attr"`
 	Value string `xml:"value,attr"`
@@ -66,4 +93,10 @@ type IntegerNode struct {
 type StringNode struct {
 	Name  string `xml:"name,attr"`
 	Value string `xml:"value,attr"`
+}
+
+type PointNode struct {
+	Name string `xml:"name,attr"`
+	X    string `xml:"x,attr"`
+	Y    string `xml:"y,attr"`
 }
