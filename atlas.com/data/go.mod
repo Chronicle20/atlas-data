@@ -3,8 +3,8 @@ module atlas-data
 go 1.21.6
 
 require (
-	github.com/Chronicle20/atlas-model v0.0.0-20240724125124-7952fe30f754
-	github.com/Chronicle20/atlas-rest v0.0.0-20240723203319-7d81b01598b5
+	github.com/Chronicle20/atlas-model v1.0.0
+	github.com/Chronicle20/atlas-rest v1.0.0
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/manyminds/api2go v0.0.0-20220325145637-95b4fb838cf6
@@ -12,7 +12,6 @@ require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	go.elastic.co/ecslogrus v1.0.0
-	golang.org/x/sys v0.22.0
 )
 
 require (
@@ -22,4 +21,5 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	go.uber.org/atomic v1.11.0 // indirect
+	golang.org/x/sys v0.22.0 // indirect
 )
