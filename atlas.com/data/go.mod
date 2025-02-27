@@ -5,7 +5,7 @@ go 1.23.1
 require (
 	github.com/Chronicle20/atlas-constants v1.0.12
 	github.com/Chronicle20/atlas-model v1.2.1
-	github.com/Chronicle20/atlas-rest v1.2.6
+	github.com/Chronicle20/atlas-rest v1.2.8
 	github.com/Chronicle20/atlas-tenant v1.0.4
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/mux v1.8.1
@@ -24,6 +24,7 @@ require (
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.1 // indirect
+	github.com/jtumidanski/api2go v1.0.2 // indirect
 	github.com/magefile/mage v1.15.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/otel/metric v1.34.0 // indirect
