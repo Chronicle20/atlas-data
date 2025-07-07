@@ -84,7 +84,10 @@ Query Parameters:
 
 ##### [GET] Get All Maps
 
-```/api/data/maps```
+`/api/data/maps`
+
+Query Parameters:
+- `name` - Filter maps by name (street name or map name)
 
 ##### [GET] Get Map Information
 

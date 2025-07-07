@@ -14,6 +14,7 @@ import (
 	"gorm.io/gorm"
 	"net/http"
 	"strconv"
+	"strings"
 )
 
 func InitResource(db *gorm.DB) func(si jsonapi.ServerInformation) server.RouteInitializer {
@@ -42,7 +43,7 @@ func handleGetMapsRequest(db *gorm.DB) func(d *rest.HandlerDependency, c *rest.H
 	return func(d *rest.HandlerDependency, c *rest.HandlerContext) http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
 			s := NewStorage(d.Logger(), db)
-			res, err := s.GetAll(d.Context())
+			all, err := s.GetAll(d.Context())
 			if err != nil {
 				w.WriteHeader(http.StatusInternalServerError)
 				return
@@ -50,7 +51,18 @@ func handleGetMapsRequest(db *gorm.DB) func(d *rest.HandlerDependency, c *rest.H
 
 			query := r.URL.Query()
 			queryParams := jsonapi.ParseQueryFields(&query)
-			server.MarshalResponse[[]RestModel](d.Logger())(w)(c.ServerInformation())(queryParams)(res)
+
+			if val, ok := query["name"]; ok {
+				var result []RestModel
+				for _, m := range all {
+					if strings.Contains(strings.ToLower(m.Name), strings.ToLower(val[0])) || strings.Contains(strings.ToLower(m.StreetName), strings.ToLower(val[0])) {
+						result = append(result, m)
+					}
+				}
+				server.MarshalResponse[[]RestModel](d.Logger())(w)(c.ServerInformation())(queryParams)(result)
+			} else {
+				server.MarshalResponse[[]RestModel](d.Logger())(w)(c.ServerInformation())(queryParams)(all)
+			}
 		}
 	}
 }
